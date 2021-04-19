@@ -1,7 +1,7 @@
 <?php
 $method = $_SERVER["REQUEST_METHOD"];
 include('./class/Student.php');
-$student = new Student();
+$student = new Student();             //new istance of Stundent class
 
 switch($method) 
 {
@@ -20,17 +20,14 @@ switch($method)
     header("Content-Type: application/json");
     echo($js_encode);
     break;
-
+  
   case 'POST':
     $student = new Student();
     $id = $student->$id;
-    if(isset($id))
-    {
-      $student->post($student);
-      $js_encode = json_encode(array('state'=>TRUE, 'student'=>$student),true);
-      header("Content-Type: application/json");
-      echo($js_encode);
-    }
+    $student->post($student);
+    $js_encode = json_encode(array('state'=>TRUE, 'student'=>$student),true);
+    header("Content-Type: application/json");
+    echo($js_encode);
     break;
 
   case 'DELETE':

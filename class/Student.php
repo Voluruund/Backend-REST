@@ -10,10 +10,10 @@ class Student
   public $_sidiCode;
   public $_taxCode;
 
-  //construct
+  //construct method
   public function __construct() 
   {
-    $this->db = new DBConnection();
+    $this->db = new DBConnection();               //new istance of DBConnection class
     $this->db = $this->db->returnConnection();
   }
   
@@ -25,16 +25,18 @@ class Student
     $data = [
       'id' => $id
     ];
+    //execute
     $stmt->execute($data);
     $result = $stmt->fetch(\PDO::FETCH_ASSOC);
     return $result;
   }
 
-  //function to find all
+  //function to find all students
   public function all()
   {
     $sql = "SELECT * FROM student";
     $stmt = $this->db->prepare($sql);
+    //execute
     $stmt->execute();
     $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
     return $result;
@@ -48,6 +50,7 @@ class Student
     $data = [
       'student' => $student
     ];
+    //execute
     $stmt->execute($data);
     $result = $stmt->fetch(\PDO::FETCH_ASSOC);
     return $result;
@@ -61,6 +64,7 @@ class Student
     $data = [
       'id' => $id
     ];
+    //execute
     $stmt->execute($data);
     $result = $stmt->fetch(\PDO::FETCH_ASSOC);
     return $result;
@@ -73,6 +77,7 @@ class Student
     $data = [
       'student' => $student
     ];
+    //execute
     $stmt->execute($data);
     $result = $stmt->fetch(\PDO::FETCH_ASSOC);
     return $result;
